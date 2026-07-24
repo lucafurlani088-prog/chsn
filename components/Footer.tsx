@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { InstagramIcon, XIcon, YoutubeIcon } from "@/components/icons/SocialIcons";
-import { ChsnMark } from "@/components/Logo";
+import { ChsnMark, ChsnWordmark } from "@/components/Logo";
 import { FooterNewsletterForm } from "@/components/FooterNewsletterForm";
 
 const columns = [
@@ -29,9 +29,9 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <div className="mb-4 flex items-center gap-2 text-2xl font-mark">
-              <ChsnMark className="h-7 w-auto text-burgundy" bg="var(--color-ink)" />
-              <span>Chsn</span>
+            <div className="mb-4 flex items-center gap-2">
+              <ChsnMark className="h-8 w-auto" />
+              <ChsnWordmark className="h-[18px] w-auto" />
             </div>
             <p className="max-w-xs text-sm leading-relaxed text-paper-dim">
               Chosen, not given. Heavyweight fleece and matte outerwear, cut

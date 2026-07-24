@@ -43,6 +43,7 @@ export default async function ProductPage({
         <Reveal>
           <ProductArt
             product={product}
+            priority
             className="aspect-[4/5] w-full rounded-sm border border-ink-border"
           />
         </Reveal>

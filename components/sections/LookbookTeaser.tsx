@@ -1,10 +1,11 @@
+import Image from "next/image";
 import { ChsnMark } from "@/components/Logo";
 import { LinkButton } from "@/components/Button";
 import { Reveal, RevealGroup } from "@/components/Reveal";
 import { fadeUp } from "@/lib/motion";
 
 const panels = [
-  { className: "col-span-2 row-span-2", tone: "from-ink-raised via-ink to-burgundy-deep/60" },
+  { className: "col-span-2 row-span-2", tone: "from-ink-raised via-ink to-burgundy-deep/60", photo: "/products/tracksuit.webp" },
   { className: "col-span-1 row-span-1", tone: "from-burgundy-deep/50 via-ink to-ink-raised" },
   { className: "col-span-1 row-span-1", tone: "from-ink-raised via-ink to-[#170f11]" },
   { className: "col-span-1 row-span-2", tone: "from-[#160c0f] via-ink to-ink-raised" },
@@ -38,10 +39,17 @@ export function LookbookTeaser() {
             variants={fadeUp}
             className={`grain relative overflow-hidden rounded-sm border border-ink-border bg-gradient-to-br ${panel.tone} ${panel.className} aspect-square sm:aspect-auto`}
           >
-            <ChsnMark
-              className="absolute -bottom-6 -right-6 h-32 w-auto text-white/[0.04]"
-              bg="transparent"
-            />
+            {panel.photo ? (
+              <Image
+                src={panel.photo}
+                alt="CHSN Signature Tracksuit"
+                fill
+                sizes="(min-width: 640px) 50vw, 100vw"
+                className="object-cover"
+              />
+            ) : (
+              <ChsnMark className="absolute -bottom-6 -right-6 h-32 w-auto opacity-[0.06]" />
+            )}
           </Reveal>
         ))}
       </RevealGroup>

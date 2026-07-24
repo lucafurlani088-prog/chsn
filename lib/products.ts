@@ -8,9 +8,29 @@ export type Product = {
   description: string;
   details: string[];
   featured?: boolean;
+  /** Real product photo. Falls back to a line-art placeholder when absent. */
+  image?: string;
 };
 
 export const products: Product[] = [
+  {
+    slug: "signature-tracksuit",
+    name: "Signature Tracksuit",
+    category: "Hoodies",
+    price: 248,
+    colorway: "Black",
+    icon: "hoodie",
+    image: "/products/tracksuit.webp",
+    description:
+      "The flagship two-piece: a zip-up hoodie and straight-leg sweatpant in heavyweight fleece, finished with contrast stitching and the full mark on the leg.",
+    details: [
+      "420gsm brushed-back cotton fleece, two-piece set",
+      "Contrast top-stitching throughout",
+      "Embroidered chest wordmark, embroidered leg mark",
+      "Relaxed hoodie fit, straight-leg sweatpant",
+    ],
+    featured: true,
+  },
   {
     slug: "essential-hoodie",
     name: "Essential Hoodie",

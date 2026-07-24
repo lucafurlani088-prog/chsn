@@ -28,10 +28,10 @@ export function FeaturedDrop() {
         </Link>
       </Reveal>
 
-      <RevealGroup className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 sm:gap-x-8">
-        {featured.map((product) => (
+      <RevealGroup className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-4">
+        {featured.map((product, i) => (
           <Reveal key={product.slug} variants={fadeUp}>
-            <ProductCard product={product} />
+            <ProductCard product={product} priority={i === 0} />
           </Reveal>
         ))}
       </RevealGroup>

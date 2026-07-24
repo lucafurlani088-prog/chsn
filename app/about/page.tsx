@@ -35,11 +35,7 @@ export default function AboutPage() {
   return (
     <div>
       <section className="grain relative overflow-hidden border-b border-ink-border px-5 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-24">
-        <ChsnMark
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-16 -top-16 h-[26rem] w-auto text-white/[0.035]"
-          bg="transparent"
-        />
+        <ChsnMark className="pointer-events-none absolute -right-16 -top-16 h-[26rem] w-auto opacity-[0.05]" />
         <Reveal>
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-burgundy-bright">
             About CHSN

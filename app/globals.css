@@ -6,9 +6,9 @@
   --color-ink-border: #232326;
   --color-paper: #f3f1ec;
   --color-paper-dim: #b8b6b0;
-  --color-burgundy: #7c1530;
-  --color-burgundy-bright: #a32544;
-  --color-burgundy-deep: #440a19;
+  --color-burgundy: #7b0911;
+  --color-burgundy-bright: #c60613;
+  --color-burgundy-deep: #420509;
 }
 
 @theme inline {
@@ -22,7 +22,6 @@
   --color-burgundy-deep: var(--color-burgundy-deep);
   --font-display: var(--font-anton);
   --font-body: var(--font-epilogue);
-  --font-mark: var(--font-permanent-marker);
 }
 
 * {

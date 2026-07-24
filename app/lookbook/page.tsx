@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/lib/products";
 import { ChsnMark } from "@/components/Logo";
@@ -59,25 +60,34 @@ export default function LookbookPage() {
               <Link
                 href={`/shop/${product.slug}`}
                 className="grain relative flex h-full min-h-[16rem] flex-col justify-end overflow-hidden rounded-sm border border-ink-border bg-gradient-to-br p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy-bright"
-                style={{}}
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${tones[i % tones.length]}`}
-                  aria-hidden="true"
-                />
-                <ChsnMark
-                  className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-auto text-white/[0.04]"
-                  bg="transparent"
-                />
-                <Icon
-                  className="pointer-events-none absolute right-6 top-6 h-16 w-16 text-paper/50 transition-transform duration-500 group-hover:scale-110"
-                  strokeWidth={1}
-                />
+                {product.image ? (
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    priority={i === 0}
+                    sizes="(min-width: 640px) 66vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <>
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${tones[i % tones.length]}`}
+                      aria-hidden="true"
+                    />
+                    <ChsnMark className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-auto opacity-[0.05]" />
+                    <Icon
+                      className="pointer-events-none absolute right-6 top-6 h-16 w-16 text-paper/50 transition-transform duration-500 group-hover:scale-110"
+                      strokeWidth={1}
+                    />
+                  </>
+                )}
                 <div className="relative">
                   <p className="text-xs uppercase tracking-[0.2em] text-burgundy-bright">
                     Look 0{i + 1}
                   </p>
-                  <p className="mt-1 font-display text-2xl uppercase leading-none tracking-tight">
+                  <p className="mt-1 font-display text-2xl uppercase leading-none tracking-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.6)]">
                     {product.name}
                   </p>
                 </div>

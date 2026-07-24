@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Epilogue, Permanent_Marker } from "next/font/google";
+import { Anton, Epilogue } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -16,13 +16,6 @@ const epilogue = Epilogue({
   variable: "--font-epilogue",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-const permanentMarker = Permanent_Marker({
-  variable: "--font-permanent-marker",
-  subsets: ["latin"],
-  weight: "400",
   display: "swap",
 });
 
@@ -51,10 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${anton.variable} ${epilogue.variable} ${permanentMarker.variable}`}
-    >
+    <html lang="en" className={`${anton.variable} ${epilogue.variable}`}>
       <body className="min-h-dvh bg-ink text-paper antialiased">
         <a
           href="#main"

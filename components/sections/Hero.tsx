@@ -23,9 +23,8 @@ export function Hero() {
         className="pointer-events-none absolute right-[-10%] top-[-10%] h-[60vw] w-[60vw] max-h-[560px] max-w-[560px] rounded-full bg-burgundy/25 blur-[120px]"
       />
       <ChsnMark
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[-6%] top-1/2 h-[130%] w-auto -translate-y-1/2 text-white/[0.035]"
-        bg="transparent"
+        priority
+        className="pointer-events-none absolute right-[-6%] top-1/2 h-[130%] w-auto -translate-y-1/2 opacity-[0.05]"
       />
 
       <p className="relative z-10 mb-6 text-xs font-semibold uppercase tracking-[0.35em] text-burgundy-bright">

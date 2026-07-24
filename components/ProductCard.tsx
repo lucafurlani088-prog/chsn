@@ -2,7 +2,13 @@ import Link from "next/link";
 import type { Product } from "@/lib/products";
 import { ProductArt } from "@/components/ProductArt";
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  priority = false,
+}: {
+  product: Product;
+  priority?: boolean;
+}) {
   return (
     <Link
       href={`/shop/${product.slug}`}
@@ -10,6 +16,7 @@ export function ProductCard({ product }: { product: Product }) {
     >
       <ProductArt
         product={product}
+        priority={priority}
         className="aspect-[4/5] w-full rounded-sm border border-ink-border transition-colors duration-300 group-hover:border-burgundy/60"
       />
       <div className="mt-4 flex items-start justify-between gap-2">

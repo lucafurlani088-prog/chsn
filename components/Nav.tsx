@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, ShoppingBag, X } from "lucide-react";
-import { ChsnMark } from "@/components/Logo";
+import { ChsnMark, ChsnWordmark } from "@/components/Logo";
 import { useCart } from "@/store/cart";
 import { EASE_OUT } from "@/lib/motion";
 
@@ -45,11 +45,11 @@ export function Nav() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2 text-xl font-mark tracking-wide focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy rounded"
+          className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy rounded"
           onClick={() => setMenuOpen(false)}
         >
-          <ChsnMark className="h-6 w-auto text-burgundy" bg="var(--color-ink)" />
-          <span>Chsn</span>
+          <ChsnMark className="h-7 w-auto" priority />
+          <ChsnWordmark className="h-4 w-auto" priority />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
