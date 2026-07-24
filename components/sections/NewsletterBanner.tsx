@@ -44,7 +44,7 @@ export function NewsletterBanner() {
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.15 }}
             type="submit"
-            className="cursor-pointer whitespace-nowrap rounded-full bg-burgundy px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-burgundy-bright focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="cursor-pointer whitespace-nowrap rounded-full bg-burgundy px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-paper transition-colors hover:bg-burgundy-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy-bright focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
           >
             Notify Me
           </motion.button>
