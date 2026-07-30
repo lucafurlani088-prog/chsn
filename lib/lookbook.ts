@@ -58,6 +58,20 @@ export const looks: Look[] = [
     icon: "hoodie",
   },
   {
+    // Full-length styling shot. No `slug`: neither the heart-graphic top nor the
+    // panelled wide-leg jeans are in the catalogue yet, and pointing this at the
+    // nearest product would mislabel the garments.
+    id: "full-fit",
+    title: "Full Fit",
+    image: "/lookbook/campaign-03.jpg",
+    // Three rows, not two: a head-to-toe frame needs a tile tall enough not to
+    // crop the shoes off, which is the whole point of a full-length shot.
+    span: "sm:row-span-3",
+    orientation: "portrait",
+    tone: "from-ink-raised via-ink to-burgundy-deep/50",
+    icon: "tee",
+  },
+  {
     id: "essential-hoodie",
     title: "Essential Hoodie",
     slug: "essential-hoodie",
@@ -80,7 +94,9 @@ export const looks: Look[] = [
     title: "Utility Cargo Pant",
     slug: "utility-cargo",
     image: "/lookbook/look-utility-cargo.jpg",
-    span: "sm:col-span-2",
+    // Plain tile rather than col-span-2: a full-width tile cannot sit alongside
+    // the row-span-3 Full Fit frame, which strands it and leaves a dead row.
+    span: "",
     orientation: "landscape",
     tone: "from-ink-raised via-ink to-burgundy-deep/40",
     icon: "pants",

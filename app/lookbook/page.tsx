@@ -24,7 +24,7 @@ export default function LookbookPage() {
           Lookbook
         </h1>
         <p className="mt-4 max-w-md text-base text-paper-dim">
-          Shot on the block, not in a studio. Six looks from the current
+          Shot on the block, not in a studio. Every look from the current
           collection.
         </p>
       </div>
@@ -71,7 +71,7 @@ export default function LookbookPage() {
               )}
               <div className="relative">
                 <p className="text-xs uppercase tracking-[0.2em] text-burgundy-bright [text-shadow:0_1px_10px_rgba(0,0,0,0.9)]">
-                  Look 0{i + 1}
+                  Look {String(i + 1).padStart(2, "0")}
                 </p>
                 <p className="mt-1 font-display text-2xl uppercase leading-none tracking-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.6)]">
                   {look.title}

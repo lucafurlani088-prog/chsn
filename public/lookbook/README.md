@@ -1,4 +1,3 @@
-<img width="2160" height="3840" alt="gggg" src="https://github.com/user-attachments/assets/6eccf364-e908-4f14-8b0a-8e39c93a67a0" />
 # Lookbook & campaign photography
 
 Drop photos in this folder using the exact filenames below. Each slot is already
@@ -12,9 +11,14 @@ Slots are declared in `lib/lookbook.ts`.
 | ---------------------------- | ----------------------------------------- | -------------------- |
 | `campaign-01.jpg`            | **Homepage hero** backdrop + Look 01      | Portrait, subject right of centre |
 | `campaign-02.jpg`            | Look 03 (tall tile)                       | Portrait             |
-| `look-essential-hoodie.jpg`  | Look 04                                   | Landscape            |
-| `look-signature-bomber.jpg`  | Look 05                                   | Landscape            |
-| `look-utility-cargo.jpg`     | Look 06 (full-width tile)                 | Landscape            |
+| `campaign-03.jpg`            | Look 04 (tall tile) — full-length fit     | Portrait, head to toe |
+| `look-essential-hoodie.jpg`  | Look 05                                   | Landscape            |
+| `look-signature-bomber.jpg`  | Look 06                                   | Landscape            |
+| `look-utility-cargo.jpg`     | Look 07 (full-width tile)                 | Landscape            |
+
+Photos in the `campaign-*` series are worn styling shots and don't have to map to
+a catalogue product. The `look-*` files are tied to a specific product, so the
+tile links through to it.
 
 `campaign-01.jpg` doubles as the hero backdrop, where it is anchored around 70–75%
 horizontally so the headline sits in clear space on the left. Pick a frame with

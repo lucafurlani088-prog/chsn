@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, ShoppingBag, X } from "lucide-react";
@@ -19,6 +20,9 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const openCart = useCart((s) => s.open);
   const count = useCart((s) => s.count());
+  // The home page carries the mark alone, large and centred; every other route
+  // keeps the compact mark + wordmark lockup on the left.
+  const isHome = usePathname() === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -42,17 +46,44 @@ export function Nav() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link
-          href="/"
-          className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy rounded"
-          onClick={() => setMenuOpen(false)}
-        >
-          <ChsnMark className="h-7 w-auto" priority />
-          <ChsnWordmark className="h-4 w-auto" priority />
-        </Link>
+      {/* Home lays out as three columns so the centred mark sits dead centre and
+          drives the header's height. Everywhere else stays a simple flex row. */}
+      <div
+        className={`mx-auto max-w-7xl items-center px-5 py-4 sm:px-8 ${
+          isHome
+            ? "grid grid-cols-[1fr_auto_1fr] gap-4"
+            : "flex justify-between"
+        }`}
+      >
+        {isHome ? (
+          <Link
+            href="/"
+            aria-label="CHSN — home"
+            /* Explicit column: the nav is display:none below md, which would
+               otherwise vacate its cell and slide the mark off centre. */
+            className="col-start-2 justify-self-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy"
+            onClick={() => setMenuOpen(false)}
+          >
+            <ChsnMark
+              tone="white"
+              priority
+              className={`w-auto transition-all duration-300 ${
+                scrolled ? "h-11 sm:h-12" : "h-16 sm:h-24"
+              }`}
+            />
+          </Link>
+        ) : (
+          <Link
+            href="/"
+            className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy rounded"
+            onClick={() => setMenuOpen(false)}
+          >
+            <ChsnMark className="h-7 w-auto" priority />
+            <ChsnWordmark className="h-4 w-auto" priority />
+          </Link>
+        )}
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 md:col-start-1 md:flex">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -65,7 +96,7 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="col-start-3 flex items-center gap-2 justify-self-end">
           <button
             type="button"
             onClick={openCart}

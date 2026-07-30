@@ -1,6 +1,12 @@
 type MarkProps = {
   className?: string;
   priority?: boolean;
+  /**
+   * "white" renders the mark in solid white. The source art is one flat
+   * burgundy, so `brightness-0 invert` recolours it without needing a second
+   * PNG — alpha and the antialiased edges are preserved.
+   */
+  tone?: "brand" | "white";
 };
 
 /**
@@ -8,7 +14,7 @@ type MarkProps = {
  * purpose: reused at wildly varying, often CSS-percentage-driven sizes
  * across the site, which doesn't fit next/image's fixed intrinsic sizing.
  */
-export function ChsnMark({ className, priority }: MarkProps) {
+export function ChsnMark({ className, priority, tone = "brand" }: MarkProps) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
@@ -17,7 +23,7 @@ export function ChsnMark({ className, priority }: MarkProps) {
       aria-hidden="true"
       loading={priority ? "eager" : "lazy"}
       decoding="async"
-      className={className}
+      className={`${tone === "white" ? "brightness-0 invert" : ""} ${className ?? ""}`}
     />
   );
 }
