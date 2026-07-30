@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { LinkButton } from "@/components/Button";
 import { ChsnMark } from "@/components/Logo";
@@ -15,17 +16,45 @@ const line = {
   }),
 };
 
-export function Hero() {
+export function Hero({ image }: { image?: string }) {
   return (
     <section className="grain relative flex min-h-[92dvh] flex-col justify-end overflow-hidden bg-ink px-5 pb-14 pt-32 sm:px-8 sm:pb-20">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[-10%] top-[-10%] h-[60vw] w-[60vw] max-h-[560px] max-w-[560px] rounded-full bg-burgundy/25 blur-[120px]"
-      />
-      <ChsnMark
-        priority
-        className="pointer-events-none absolute right-[-6%] top-1/2 h-[130%] w-auto -translate-y-1/2 opacity-[0.05]"
-      />
+      {image ? (
+        <>
+          <Image
+            src={image}
+            alt=""
+            aria-hidden="true"
+            fill
+            priority
+            sizes="100vw"
+            /* A portrait frame crops hard into this wide box. Anchoring above
+               centre keeps the subject's head in shot; nudge these if a future
+               campaign image is framed differently. */
+            className="object-cover object-[68%_30%] sm:object-[74%_28%]"
+          />
+          {/* Scrim: keeps the headline legible over the frame on every crop. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/35 sm:bg-gradient-to-r sm:from-ink sm:via-ink/75 sm:to-transparent"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"
+          />
+        </>
+      ) : (
+        <>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-[-10%] top-[-10%] h-[60vw] w-[60vw] max-h-[560px] max-w-[560px] rounded-full bg-burgundy/25 blur-[120px]"
+          />
+          <ChsnMark
+            priority
+            className="pointer-events-none absolute right-[-6%] top-1/2 h-[130%] w-auto -translate-y-1/2 opacity-[0.05]"
+          />
+        </>
+      )}
 
       <p className="relative z-10 mb-6 text-xs font-semibold uppercase tracking-[0.35em] text-burgundy-bright">
         Fall / Winter Collection
@@ -62,9 +91,8 @@ export function Hero() {
         transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.6 }}
         className="relative z-10 mt-8 max-w-md text-base leading-relaxed text-paper-dim sm:text-lg"
       >
-        Heavyweight fleece and matte outerwear, cut in small runs and
-        finished with a single mark. Built for the ones who picked
-        themselves.
+        Heavyweight fleece and matte outerwear, cut in small runs and finished
+        with a single mark. Built for the ones who picked themselves.
       </motion.p>
 
       <motion.div

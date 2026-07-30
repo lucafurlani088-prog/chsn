@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CHSN
 
-## Getting Started
+Storefront for CHSN — *chosen, not given*. Next.js App Router, Tailwind v4,
+Framer Motion, Zustand for the cart.
 
-First, run the development server:
+## Running it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm run build    # production build
+npm run lint
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Adding photography
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Photos are added by dropping files into `public/` at documented paths — no code
+change needed for slots that already exist. Anything declared but not yet
+delivered falls back to a placeholder rather than a broken image, so the site is
+always shippable mid-shoot.
 
-## Learn More
+- **Campaign / lookbook shots** → `public/lookbook/`.
+  See [`public/lookbook/README.md`](public/lookbook/README.md) for the filename
+  for each slot. Slots live in `lib/lookbook.ts`.
+- **Product packshots** → `public/products/`, then set `image` on that product in
+  `lib/products.ts`.
 
-To learn more about Next.js, take a look at the following resources:
+`lib/media.ts` does the existence check at build time.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Layout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Path                | What's there                                                 |
+| ------------------- | ------------------------------------------------------------ |
+| `app/`              | Routes: home, `/shop`, `/shop/[slug]`, `/lookbook`, `/about` |
+| `components/`       | UI; `components/sections/` holds the homepage blocks          |
+| `lib/products.ts`   | Catalogue — the single source for products                     |
+| `lib/lookbook.ts`   | Campaign / lookbook slots                                     |
+| `store/cart.ts`     | Cart state                                                    |
 
-## Deploy on Vercel
+The cart is client-side only; there's no checkout wired up yet.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Brand
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ink black `#0a0a0b`, burgundy accent, Anton display over Epilogue body. Logo
+assets are in `public/brand/`.
