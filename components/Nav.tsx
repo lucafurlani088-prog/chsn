@@ -68,7 +68,7 @@ export function Nav() {
               tone="white"
               priority
               className={`w-auto transition-all duration-300 ${
-                scrolled ? "h-11 sm:h-12" : "h-16 sm:h-24"
+                scrolled ? "h-12 sm:h-14" : "h-20 sm:h-32"
               }`}
             />
           </Link>
@@ -83,18 +83,23 @@ export function Nav() {
           </Link>
         )}
 
-        <nav className="hidden items-center gap-8 md:col-start-1 md:flex">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="group relative text-sm font-medium uppercase tracking-[0.15em] text-paper-dim transition-colors hover:text-paper"
-            >
-              {l.label}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-burgundy transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
-        </nav>
+        {/* Home carries the mark alone — no link text beside it. Navigation
+            there runs through the menu button, which stays visible at every
+            width instead of collapsing to mobile only. */}
+        {!isHome && (
+          <nav className="hidden items-center gap-8 md:flex">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="group relative text-sm font-medium uppercase tracking-[0.15em] text-paper-dim transition-colors hover:text-paper"
+              >
+                {l.label}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-burgundy transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ))}
+          </nav>
+        )}
 
         <div className="col-start-3 flex items-center gap-2 justify-self-end">
           <button
@@ -116,7 +121,9 @@ export function Nav() {
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
-            className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-paper transition-colors hover:bg-ink-raised focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy md:hidden"
+            className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-paper transition-colors hover:bg-ink-raised focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy ${
+              isHome ? "" : "md:hidden"
+            }`}
           >
             {menuOpen ? (
               <X className="h-5 w-5" strokeWidth={1.5} />
@@ -134,7 +141,9 @@ export function Nav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: EASE_OUT }}
-            className="border-t border-ink-border bg-ink px-5 pb-8 pt-4 md:hidden"
+            className={`border-t border-ink-border bg-ink px-5 pb-8 pt-4 ${
+              isHome ? "" : "md:hidden"
+            }`}
           >
             <nav className="flex flex-col gap-1">
               {links.map((l, i) => (
