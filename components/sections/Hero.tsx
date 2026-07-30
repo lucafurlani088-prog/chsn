@@ -31,7 +31,7 @@ export function Hero({ image }: { image?: string }) {
             /* A portrait frame crops hard into this wide box. Anchoring above
                centre keeps the subject's head in shot; nudge these if a future
                campaign image is framed differently. */
-            className="object-cover object-[68%_30%] sm:object-[74%_28%]"
+            className="object-cover object-[62%_34%] sm:object-[50%_30%]"
           />
           {/* Scrim: keeps the headline legible over the frame on every crop. */}
           <div
